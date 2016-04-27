@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 
     if user
       sing_in(user)
-      redirect_to #all personals link
+      redirect_to personals_url
     else
       flash.now[:errors] = "Invalid Input"
       render :new

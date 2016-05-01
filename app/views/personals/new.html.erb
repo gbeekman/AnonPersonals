@@ -1,6 +1,6 @@
 <h2>New Personal Ad</h2>
 
-<form action="<%= personals_url %>" method="POST">
+<form action="<%= user_personals_url(@current_user) %>" method="POST">
   <%= auth_token %>
 
   <label>
@@ -25,7 +25,7 @@
 
   <label>
     Body
-    <input type="text" name="personal[body]" value="<%= @personal.body %>" id="body">
+    <input type="textarea" name="personal[body]" value="<%= @personal.body %>" id="body">
   </label>
 
   <input type="submit" value="Create Ad" />

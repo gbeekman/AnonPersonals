@@ -44,7 +44,7 @@
  input[type="password"],
  input[type="email"],
  input[type="text"],
- textarea,
+ input[type="textarea"],
  button {
    background: #ccc;
    border: 1px solid white;

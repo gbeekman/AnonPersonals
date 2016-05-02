@@ -3,6 +3,9 @@ AnonPersonals::Application.routes.draw do
 
   resources :users, only: [:new, :create, :show]
   resource :session, only: [:new, :create, :destroy]
-  resources :personals
+  resources :personals do
+    resources :messages, only: :create
+  end
+  resources :messages, only: [:new, :destroy, :index, :show]
 
 end

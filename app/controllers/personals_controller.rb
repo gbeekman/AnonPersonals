@@ -1,5 +1,6 @@
 class PersonalsController < ApplicationController
   before_filter :require_signed_in
+
   def new
     @personal = Personal.new
 
@@ -52,6 +53,6 @@ class PersonalsController < ApplicationController
   private
 
   def personal_params
-    params.require(:link).permit(:title, :body, :location, :gender, :age)
+    params.require(:personal).permit(:title, :body, :location, :gender, :age)
   end
 end

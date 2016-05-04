@@ -8,4 +8,11 @@ class Personal < ActiveRecord::Base
   foreign_key: :user_id,
   primary_key: :id
   )
+
+  has_many(
+  :messages,
+  class_name: "Message",
+  foreign_key: :personals_id,
+  primary_key: :id
+  )
 end

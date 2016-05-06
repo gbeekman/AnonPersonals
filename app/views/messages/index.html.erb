@@ -1,0 +1,11 @@
+<h2>Inbox</h2>
+<br />
+<br />
+
+<ul>
+  <% @messages.each do |message| %>
+    <li> <%= link_to message.title, message_url(message) %> </li>
+
+  <% end %>
+</ul>
+ 

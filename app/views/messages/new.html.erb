@@ -1,0 +1,17 @@
+<h2>New Message</h2>
+<br />
+<br />
+
+<form action="<%= personal_messages_url %>" method="POST">
+  <%= auth_token %>
+
+  <label>Title
+    <input type="text" name="message[title]" value="" />
+  </label>
+
+  <label>Body
+    <input type="textarea" name="message[body]" value="" />
+  </label>
+
+  <input type="submit" value="Send Message" />
+</form>

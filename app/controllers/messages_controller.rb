@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
     @message.receiver_id = Personal.find(@message.personals_id).user_id
 
     if @message.save
-      redirect_to user_url
+      redirect_to user_url(@current_user)
     else
       flash.now[:errors] = @message.errors.full_messages
       render :new
@@ -30,7 +30,7 @@ class MessagesController < ApplicationController
   end
 
   def destroy
-    message = Message.find(params[:personal_id])
+    message = Message.find(params[:id])
     message.destroy
     redirect_to messages_url
 
@@ -39,6 +39,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:body)
+    params.require(:message).permit(:body, :title)
   end
 end

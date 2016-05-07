@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  acts_as_messageable
   validates :email, :username, :session_token, :password_digest, presence: true
   validates :email, :username, uniqueness: true
   validates :password, length: {minimum: 6, allow_nil: true}

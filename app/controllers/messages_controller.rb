@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.sender_id = current_user.id
-    @message.personals_id = @message(params[:personal_id])
+    @message.personals_id = params[:personal_id]
     @message.receiver_id = Personal.find(@message.personals_id).user_id
 
     if @message.save
@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
   end
 
   def index
-    @messages = Message.where("receiver_id = ?" @current_user.id)
+    @messages = Message.where("receiver_id = ?", @current_user.id)
 
   end
 

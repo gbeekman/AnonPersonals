@@ -21,4 +21,5 @@ class Message < ActiveRecord::Base
   foreign_key: :personals_id,
   primary_key: :id
   )
+
 end

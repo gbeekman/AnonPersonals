@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  before_create :randomize_id
   validates :email, :username, :session_token, :password_digest, presence: true
   validates :email, :username, uniqueness: true
   validates :password, length: {minimum: 6, allow_nil: true}
@@ -59,6 +60,13 @@ class User < ActiveRecord::Base
 
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64(16)
+  end
+
+  def randomize_id
+    begin
+      self.id = SecureRandom.random_number(1_000_000)
+    end while User.where(id: self.id).exists?
+
   end
 
 end

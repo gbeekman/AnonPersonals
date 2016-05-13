@@ -55,8 +55,17 @@
  button,
  input[type="submit"] {
    cursor: pointer;
+   background: white;
+   color: black;
+   width: 75px;
+   font-weight: bold;
+   border: 1px solid: #C86E14;
+   border-radius: 5px;
+   text-align: center;
+   padding: 2px;
 
  }
+
 
  /* Clearfix */
 
@@ -74,13 +83,32 @@
   color: white;
 }
 
+.title{
+  font-size: 36px;
+  text-align: center;
+}
+
+.header{
+  background: #3B3A39;
+  border-bottom: 1px solid #C86E14;
+  display: block;
+}
+
+.header-content{
+  float: right;
+
+}
+.header-sign-out{
+  float: left;
+}
+
 .content {
   position: relative;
   margin: 0 auto;
   width: 900px;
-  border-left: 1px solid #ccc
-  border-right: 1px solid #ccc
-  border-bottom: 1px solid #ccc
+  border-left: 1px solid #C86E14;
+  border-right: 1px solid #C86E14;
+  border-bottom: 1px solid #C86E14;
 
 }
 

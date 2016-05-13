@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  after_initialize :ensure_session_token
   before_create :randomize_id
   validates :email, :username, :session_token, :password_digest, presence: true
   validates :email, :username, uniqueness: true
@@ -6,7 +7,6 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
-  after_initialize :ensure_session_token
 
   has_many(
   :personals,
@@ -36,10 +36,6 @@ class User < ActiveRecord::Base
   primary_key: :id
   )
 
-  def self.find_by_credentials(username, password)
-    user = User.find_by(username: username)
-    return nil unless user && user.valid_password?(password)
-  end
 
   def password=(password)
     @password = password

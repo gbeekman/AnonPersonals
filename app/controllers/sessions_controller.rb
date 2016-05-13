@@ -6,16 +6,13 @@ class SessionsController < ApplicationController
 
   def create
 
-    user = User.find_by_credentials(
-      params[:user][:username],
-      params[:user][:password]
-    )
+    user = User.find_by(username: params[:user][:username])
 
-    if user
-      sing_in(user)
-      redirect_to personals_url
+    if  user && user.valid_password?(params[:user][:password])
+      sign_in(user)
+      redirect_to user_url(user)
     else
-      flash.now[:errors] = "Invalid Input"
+      flash.now[:errors] = ["Invalid Input"]
       render :new
     end
   end

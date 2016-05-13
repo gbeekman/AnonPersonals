@@ -2,20 +2,20 @@
 <br />
 <br />
 
-<form action="<%= users_url %>" method="POST">
+<form action="<%= session_url %>" method="POST">
   <%= auth_token %>
 
   <label>Username
-    <input type="text" name="user[username]" value="" />
+    <input type="text" name="user[username]" value="" >
   </label>
 <br />
 <br />
 
   <label>Password
-    <input type="password" name="user[password]" value="" />
+    <input type="password" name="user[password]" value="" >
   </label>
   <br />
   <br />
 
-  <input type="submit" value="Sign In" />
+  <input type="submit" value="Sign In" >
 </form>

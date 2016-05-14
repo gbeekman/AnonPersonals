@@ -57,7 +57,7 @@
    cursor: pointer;
    background: white;
    color: black;
-   width: 75px;
+
    font-weight: bold;
    border: 1px solid: #C86E14;
    border-radius: 5px;
@@ -102,6 +102,11 @@
   float: left;
 }
 
+.page-title{
+  font-size: 24px;
+  text-align: center;
+}
+
 .content {
   position: relative;
   margin: 0 auto;
@@ -126,7 +131,35 @@
 .content-sidebar {
   float: left;
   width: 200px;
-  min-height: 200px;
   padding: 20px;
+  border-right: 1px solid #C86E14;
+  border-bottom: 1px solid #C86E14;
 
+}
+
+.personal {
+float: right;
+padding: 10px;
+width: 150px;
+height: 200px
+
+}
+
+.info{
+  background: #ccc;
+  color: black;
+  border: 1px solid #C86E14;
+}
+
+.ad-title{
+  font-size: 20px;
+  text-align: center;
+}
+
+.ad--body{
+  background: white;
+  color: black;
+  border-left: 1px solid #C86E14;
+  border-right: 1px solid #C86E14;
+  border-bottom: 1px solid #C86E14;
 }

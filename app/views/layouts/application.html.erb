@@ -27,12 +27,12 @@
 </header>
 
 <% if signed_in? %>
-<main class="content group">
+<main>
 
   <section class="content-sidebar">
     <ul class="nav">
       <li><a href="<%= new_personal_url %>">Create Ad</a></li>
-      <li><a href="#">Search Ads</a></li>
+      <li><a href="<%= personals_url %>">Search Ads</a></li>
       <li><a href="<%= messages_url %>">Messages</a></li>
       <li><a href="#">Chat</a></li>
     </ul>

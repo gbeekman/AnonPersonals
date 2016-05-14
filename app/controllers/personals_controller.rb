@@ -12,7 +12,7 @@ class PersonalsController < ApplicationController
   end
 
   def index
-    @personals = Personals.all
+    @personals = Personal.all
 
   end
 

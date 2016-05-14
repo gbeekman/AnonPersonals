@@ -1,1 +1,28 @@
-<h2> Personals</h2>
+<body>
+<main>
+
+  <section class="content-main">
+
+    <h2 class="page-title"> Personals</h2>
+
+      <% @personals.each_slice(5) do |personal_row| %>
+        <% personal_row.each do |personal| %>
+        <a href="<%=personal_url(personal) %>">
+      <div class="personal group">
+        <div class="info">
+
+      <p class="ad-title"><%= personal.title %></p>
+      Gender: <%= personal.gender %>
+      <br />
+      Age: <%= personal.age %>
+      <br />
+      Location: <%= personal.location %>
+    </div>
+    <p class="ad--body"><%= personal.body %></p>
+    </div>
+  </a>
+    <% end %>
+    <% end %>
+  </section>
+</main>
+</body>

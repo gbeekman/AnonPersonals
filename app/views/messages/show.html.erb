@@ -3,3 +3,11 @@
 <p>
   <%= @message.body %>
 </p>
+
+<form method="post">
+  <%= auth_token %>
+
+  <input type="submit" name="accept" value="Accept" />
+
+  <input type="submit" name="reject" value="Reject" />
+</form>

@@ -27,6 +27,13 @@ class MessagesController < ApplicationController
   def show
     @message = Message.find(params[:id])
 
+    if params[:accept]
+      auto_confirm(@message)
+    else
+
+    end
+
+
   end
 
   def destroy
@@ -40,5 +47,18 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:body, :title)
+  end
+
+  def auto_confirm(message)
+    user_name = User.find(message.receiver_id)
+
+    confirm_message = Message.new()
+    confirm_message.receiver_id = message.send_id
+    confirm_message.sender_id = message.receiver_id
+    confirm_message.personals_id = message.personals_id
+    confirm_message.title = "Your message has been accepted!"
+    confirm_message.body = "Your reply to #{message.title} was accepted. You may now chat with #{user_name.username}."
+
+    confirm_message.save
   end
 end

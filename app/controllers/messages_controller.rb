@@ -28,9 +28,12 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
 
     if params[:accept]
+      user = User.find(@message.sender_id)
       auto_confirm(@message)
-    else
-
+      redirect_to messages_url, notice: "You can now chat with #{user.username}."
+    elsif params[:reject]
+      @message.destroy
+      redirect_to messages_url, notice: "Message deleted"
     end
 
 
@@ -53,7 +56,7 @@ class MessagesController < ApplicationController
     user_name = User.find(message.receiver_id)
 
     confirm_message = Message.new()
-    confirm_message.receiver_id = message.send_id
+    confirm_message.receiver_id = message.sender_id
     confirm_message.sender_id = message.receiver_id
     confirm_message.personals_id = message.personals_id
     confirm_message.title = "Your message has been accepted!"

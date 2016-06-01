@@ -29,6 +29,10 @@ class MessagesController < ApplicationController
 
     if params[:accept]
       user = User.find(@message.sender_id)
+      user.partners += @current_user.id
+      @current_user.partners += @message.sender_id
+      @current_user.save
+      user.save
       auto_confirm(@message)
       redirect_to messages_url, notice: "You can now chat with #{user.username}."
     elsif params[:reject]
@@ -54,6 +58,7 @@ class MessagesController < ApplicationController
 
   def auto_confirm(message)
     user_name = User.find(message.receiver_id)
+
 
     confirm_message = Message.new()
     confirm_message.receiver_id = message.sender_id

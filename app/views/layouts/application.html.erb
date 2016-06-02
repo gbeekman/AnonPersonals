@@ -27,6 +27,12 @@
 </header>
 
 <% if signed_in? %>
+
+  <% @chat_partners = [] %>
+  <% @current_user.partners.each do |partner_id| %>
+    <% @chat_partners += User.find(partner_id) %>
+<% end %>
+
 <main>
 
   <section class="content-sidebar">
@@ -34,8 +40,20 @@
       <li><a href="<%= new_personal_url %>">Create Ad</a></li>
       <li><a href="<%= personals_url %>">Search Ads</a></li>
       <li><a href="<%= messages_url %>">Messages</a></li>
-
-      <li><a href="#">Chat</a></li>
+      <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">
+        <li><a href="#">Chat</a></li> </button>
+          <div id="myDropDown" class="dropdown-content">
+            <tr>
+              <% @chat_partners.each do |user| %>
+              <td>
+                <%= link_to "#{user.username}", "#", class: "btn btn-success btn-xs start-conversation",
+                    "data-sid" => @current_user.id, "data-rip" => user.id %>
+              </td>
+              <% end %>
+            </tr>
+          </div>
+    </div>
     </ul>
   </section>
 
@@ -45,6 +63,29 @@
   <%= render "layouts/errors" %>
 
   <%= yield %>
+
+  <script>
+  /* When the user clicks on the button,
+  toggle between hiding and showing the dropdown content */
+  function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+  </script>
 
 </body>
 </html>

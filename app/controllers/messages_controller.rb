@@ -29,7 +29,7 @@ class MessagesController < ApplicationController
 
     if params[:accept]
       user = User.find(@message.sender_id)
-      user.partners += @current_user.id
+      user.partners += @message.receiver_id
       @current_user.partners += @message.sender_id
       @current_user.save
       user.save

@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  before_filter :require_signed_in
 
   def new
     render :new
@@ -29,8 +30,8 @@ class MessagesController < ApplicationController
 
     if params[:accept]
       user = User.find(@message.sender_id)
-      user.partners += @message.receiver_id
-      @current_user.partners += @message.sender_id
+      user.partners << @message.receiver_id
+      @current_user.partners << @message.sender_id
       @current_user.save
       user.save
       auto_confirm(@message)

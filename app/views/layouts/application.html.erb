@@ -30,7 +30,7 @@
 <% @chat_partners = [] %>
   <% if current_user.partners %>
   <% current_user.partners.each do |partner_id| %>
-    <% @chat_partners += User.find(partner_id) %>
+    <% @chat_partners << User.find(partner_id) %>
   <% end %>
   <% end %>
 

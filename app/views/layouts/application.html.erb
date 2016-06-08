@@ -47,7 +47,9 @@
           <div id="myDropDown" class="dropdown-content">
             <tr>
               <% @chat_partners.each do |user| %>
+              debugger
               <td>
+
                 <%= link_to "#{user.username}", "#", class: "btn btn-success btn-xs start-conversation",
                     "data-sid" => current_user.id, "data-rip" => user.id %>
               </td>

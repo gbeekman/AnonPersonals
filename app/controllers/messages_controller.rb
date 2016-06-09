@@ -30,8 +30,8 @@ class MessagesController < ApplicationController
 
     if params[:accept]
       user = User.find(@message.sender_id)
-      user.partners << @message.receiver_id
-      @current_user.partners << @message.sender_id
+      user.partners << @current_user
+      @current_user.partners << user
       @current_user.save
       user.save
       auto_confirm(@message)

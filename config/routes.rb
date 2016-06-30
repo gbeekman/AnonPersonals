@@ -8,4 +8,7 @@ AnonPersonals::Application.routes.draw do
   end
   resources :messages, only: [:destroy, :index, :show]
 
+  resources :conversations do
+    resources :chats
+  end
 end
